@@ -45,6 +45,6 @@ fi
 if [ "$run_performance_tests" = true ]; then
   echo "Running performance tests..."
   cd "${projectRoot}"
-  cd ./fcp-mpdp-performance-tests && \
+  cd ./fcp-mpdp-performance-test-suite && \
   ./test.sh
 fi
