@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+projectRoot=$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)
+
+cd "${projectRoot}"
+
+test -d fcp-mpdp-backend\
+  && >&2 echo "fcp-mpdp-backend repository already exists. Skipping." \
+  || git clone https://github.com/DEFRA/fcp-mpdp-backend.git
+
+test -d fcp-mpdp-frontend\
+  && >&2 echo "fcp-mpdp-frontend repository already exists. Skipping." \
+  || git clone https://github.com/DEFRA/fcp-mpdp-frontend.git
+
+test -d fcp-mpdp-journey-test-suite\
+  && >&2 echo "fcp-mpdp-journey-test-suite repository already exists. Skipping." \
+  || git clone https://github.com/DEFRA/fcp-mpdp-journey-test-suite.git
+
+test -d fcp-mpdp-performance-test-suite\
+  && >&2 echo "fcp-mpdp-performance-test-suite repository already exists. Skipping." \
+  || git clone https://github.com/DEFRA/fcp-mpdp-performance-test-suite.git

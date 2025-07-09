@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+cd "${projectRoot}"
+
+code ./fcp-mpdp-backend;
+code ./fcp-mpdp-frontend;
+code ./fcp-mpdp-journey-test-suite;
+code ./fcp-mpdp-peformance-test-suite;
