@@ -38,7 +38,7 @@ cd ./fcp-mpdp-frontend && \
 echo "Waiting for fcp-mpdp-frontent-localstack to become healthy..."
 until docker compose ps localstack | grep "healthy" >/dev/null; do
   echo "fcp-mpdp-frontent-localstack not healthy yet, waiting 3 seconds..."
-  sleep 3
+  sleep 
 done
 echo "fcp-mpdp-frontent-localstack is healthy."
 
