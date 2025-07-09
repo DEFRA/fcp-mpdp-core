@@ -11,3 +11,7 @@ cd ./fcp-mpdp-backend && \
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker-compose down $@
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-performance-test-suite && \
+  docker-compose down $@
