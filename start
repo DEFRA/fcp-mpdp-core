@@ -35,16 +35,25 @@ cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
 
+echo "Waiting for fcp-mpdp-frontent-localstack to become healthy..."
+until docker compose ps localstack | grep "healthy" >/dev/null; do
+  echo "fcp-mpdp-frontent-localstack not healthy yet, waiting 3 seconds..."
+  sleep 3
+done
+echo "fcp-mpdp-frontent-localstack is healthy."
+
 if [ "$run_journey_tests" = true ]; then
-  echo "Running journey test suite..."
+  echo "Starting fcp-mpdp-journey-test-suite..."
   cd "${projectRoot}"
-  cd ./fcp-mpdp-journey-test-suite && 
+  cd ./fcp-mpdp-journey-test-suite && \
+  echo "Running journey tests..."
   npm run test:local
 fi
 
 if [ "$run_performance_tests" = true ]; then
-  echo "Running performance tests..."
+  echo "Starting fcp-mpdp-performance-test-suite..."
   cd "${projectRoot}"
   cd ./fcp-mpdp-performance-test-suite && \
+  echo "Running performance tests..."
   ./test.sh
 fi
