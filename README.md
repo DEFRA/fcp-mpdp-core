@@ -2,10 +2,10 @@
 Local development support for orchestrating all MPDP microservices.
 ## Prerequisites
 To summarise the following prerequisites should be met, but ensure you refer to and meet all the prerequisites for each individual repository:  
-
-Node.js v22 or greater and NPM (Node Package Manager) v11 or greater. Easiest way to install both is to use NVM (Node Version Manager).  
-Docker  
-OpenJDK
+- Node.js v22 or greater and NPM (Node Package Manager) v11 or greater. Easiest way to install both is to use NVM (Node Version Manager).  
+- Docker
+- Docker Compose  
+- OpenJDK
 ## Repositories
 [fcp-mpdp-backend](https://github.com/DEFRA/fcp-mpdp-backend)  
 [fcp-mpdp-frontend](https://github.com/DEFRA/fcp-mpdp-frontend)  
