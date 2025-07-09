@@ -45,3 +45,6 @@ Open all microservices in Visual Studio Code.
 ### Version
 List latest GitHub release/tag version for each microservice.  
 [`./version`](./version)
+## VS Code Command Palette
+For Visual Studio Code users, all of the above commands can be run from the VS Code command palette:  
+`ctrl` + `shift` + `P` (or `cmd` + `shift` + `P` for Mac users) > Tasks: Run Task > Select the task you want to run.
