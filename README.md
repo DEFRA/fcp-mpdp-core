@@ -20,6 +20,9 @@ Clone all repositories from GitHub. Repositories will be cloned in the parent di
 ### Update
 Switch to main branch in every repository and pull latest changes with `git pull`.  
 [`./update`](./update)
+### Pull
+Pull latest changes from current branch in every repository with `git pull`.
+[`./pull`](./pull)
 ### Build
 Build/rebuild Docker container for all microservices.  
 [`./build`](./build)
