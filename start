@@ -2,6 +2,25 @@
 
 set -e
 
+run_journey_tests=false
+run_performance_tests=false
+
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    -jt|--journey-tests)
+      run_journey_tests=true
+      ;;
+    -pt|--performance-tests)
+      run_performance_tests=true
+      ;;
+    *)
+      echo "Unknown option: $1"
+      exit 1
+      ;;
+  esac
+  shift
+done
+
 projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
 
 cd "${projectRoot}"
@@ -11,3 +30,17 @@ cd ./fcp-mpdp-backend && \
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
+
+if [ "$run_journey_tests" = true ]; then
+  echo "Running journey test suite..."
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-journey-test-suite && 
+  npm run test:local
+fi
+
+if [ "$run_performance_tests" = true ]; then
+  echo "Running performance tests..."
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-performance-tests && \
+  ./test.sh
+fi

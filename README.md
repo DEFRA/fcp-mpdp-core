@@ -11,12 +11,30 @@ OpenJDK
 [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite)  
 [fcp-mpdp-performance-test-suite](https://github.com/DEFRA/fcp-mpdp-performance-test-suite)
 ## Scripts
-Command | Description | Optional arguments 
---------|-------------|--------------------
-[`./clone`](./clone) | Clone all repositories from GitHub. Repositories will cloned in the parent directory of this repository. | n/a
-[`./update`](./update) | Switch to main branch in every repository and pull latest changes with `git pull`. | n/a
-[`./build`](./build) | Build/rebuild Docker container for all microservices. | n/a
-[`./start`](./start) | Run all services in detached mode. | Any valid `docker compose down` argument.
-[`./stop`](./stop) | Stop all services. | Any valid `docker compose down` argument. | n/a
-[`./open`](./open) | Open all microservices in Visual Studio Code. | n/a
-[`./version`](./version) | List latest GitHub release version for each microservice. | n/a
+### Clone
+Clone all repositories from GitHub. Repositories will cloned in the parent directory of this repository.  
+[`./clone`](./clone)
+### Update
+Switch to main branch in every repository and pull latest changes with `git pull`.  
+[`./update`](./update)
+### Build
+Build/rebuild Docker container for all microservices.  
+[`./build`](./build)
+### Start
+Run all services in detached mode.
+[`./start`](./start)
+#### Optional arguments 
+Any valid `docker compose down` argument.  
+`-jt` or `--journey-tests` to run the journey test suite.  
+`-pt` or `--performance-tests` to run the performance test suite.
+### Stop
+Stop all services.  
+[`./stop`](./stop)
+#### Optional arguments
+Any valid `docker compose down` argument.
+### Open
+Open all microservices in Visual Studio Code.  
+[`./open`](./open)
+### Version
+List latest GitHub release version for each microservice.  
+[`./version`](./version)
