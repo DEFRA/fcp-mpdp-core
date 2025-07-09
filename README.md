@@ -11,8 +11,11 @@ OpenJDK
 [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite)  
 [fcp-mpdp-performance-test-suite](https://github.com/DEFRA/fcp-mpdp-performance-test-suite)
 ## Scripts
+### Help
+List all available commands.  
+[`./help`](./help)
 ### Clone
-Clone all repositories from GitHub. Repositories will cloned in the parent directory of this repository.  
+Clone all repositories from GitHub. Repositories will be cloned in the parent directory of this repository.  
 [`./clone`](./clone)
 ### Update
 Switch to main branch in every repository and pull latest changes with `git pull`.  
@@ -21,7 +24,7 @@ Switch to main branch in every repository and pull latest changes with `git pull
 Build/rebuild Docker container for all microservices.  
 [`./build`](./build)
 ### Start
-Run all services in detached mode.
+Run all services in detached mode.  
 [`./start`](./start)
 #### Optional arguments 
 Any valid `docker compose down` argument.  
@@ -36,5 +39,5 @@ Any valid `docker compose down` argument.
 Open all microservices in Visual Studio Code.  
 [`./open`](./open)
 ### Version
-List latest GitHub release version for each microservice.  
+List latest GitHub release/tag version for each microservice.  
 [`./version`](./version)

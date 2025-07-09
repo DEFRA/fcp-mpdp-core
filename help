@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+echo "Available commands for fcp-mpdp-core:"
+echo ""
+echo "./help        List all available commands."
+echo "./clone       Clone all repositories from GitHub. Repositories will be cloned in the parent directory of this repository."
+echo "./update      Switch to main branch in every repository and pull latest changes with git pull."
+echo "./build       Build/rebuild Docker container for all microservices."
+echo "./start       Run all services in detached mode."
+echo "    Optional arguments:"
+echo "      -jt or --journey-tests        Trigger local test run of journey test suite."
+echo "      -pt or --performance-tests    Trigger local test run of performance test suite."
+echo "      Any valid docker compose down argument."
+echo "./stop        Stop all services."
+echo "    Optional arguments:"
+echo "      Any valid docker compose down argument."
+echo "./open        Open all microservices in Visual Studio Code."
+echo "./version     List latest GitHub release/tag version for each microservice."

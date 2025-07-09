@@ -15,6 +15,9 @@ while [[ "$#" -gt 0 ]]; do
       ;;
     *)
       echo "Unknown option: $1"
+      echo "Valid options:"
+      echo "  -jt or --journey-tests          Trigger local test run of journey test suite"
+      echo "  -pt or --performance--tests     Trigger local test run of performance test suite"
       exit 1
       ;;
   esac
