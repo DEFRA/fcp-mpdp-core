@@ -18,6 +18,7 @@ while [[ "$#" -gt 0 ]]; do
       echo "Valid options:"
       echo "  -jt or --journey-tests          Trigger local test run of journey test suite"
       echo "  -pt or --performance--tests     Trigger local test run of performance test suite"
+      echo "Any valid docker compose down argument"
       exit 1
       ;;
   esac
