@@ -33,7 +33,8 @@ Run all services in detached mode.
 #### Optional arguments 
 Any valid `docker compose down` argument.  
 `-jt` or `--journey-tests` to run the journey test suite.  
-`-pt` or `--performance-tests` to run the performance test suite.
+`-pt` or `--performance-tests` to run the performance test suite.  
+`-jt -pt` or `--journey-tests --performance-tests` to run all test suites.
 ### Stop
 Stop all services.  
 [`./stop`](./stop)
