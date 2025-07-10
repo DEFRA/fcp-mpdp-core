@@ -3,7 +3,7 @@
 set -e
 
 echo "Available commands for fcp-mpdp-core"
-echo ""
+echo "---------------------------------------------------------------------------------------------------------------------------------------------"
 echo "Command   |   Description"
 echo "---------------------------------------------------------------------------------------------------------------------------------------------"
 echo "./help    |   List all available commands."
@@ -20,3 +20,4 @@ echo "./stop    |   Stop all services."
 echo "          |     Optional arguments:     Any valid docker compose down argument"
 echo "./open    |   Open all microservices in Visual Studio Code."
 echo "./version |   List latest GitHub release/tag version for each microservice."
+echo "---------------------------------------------------------------------------------------------------------------------------------------------"
