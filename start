@@ -16,8 +16,9 @@ while [[ "$#" -gt 0 ]]; do
     *)
       echo "Unknown option: $1"
       echo "Valid options:"
-      echo "  -jt or --journey-tests          Trigger local test run of journey test suite"
-      echo "  -pt or --performance--tests     Trigger local test run of performance test suite"
+      echo "  -jt or --journey-tests                              Trigger local test run of journey test suite"
+      echo "  -pt or --performance--tests                         Trigger local test run of performance test suite"
+      echo "  -jt -pt or --journey-tests --performance-tests      Trigger local test run of all test suites"
       echo "Any valid docker compose down argument"
       exit 1
       ;;
