@@ -1,0 +1,60 @@
+#!/bin/bash
+
+set -e
+
+run_journey_tests=false
+run_performance_tests=false
+
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    -jt|--journey-tests)
+      run_journey_tests=true
+      ;;
+    -pt|--performance-tests)
+      run_performance_tests=true
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Valid options:"
+      echo "  -jt or --journey-tests                              Trigger local test run of journey test suite"
+      echo "  -pt or --performance--tests                         Trigger local test run of performance test suite"
+      echo "  -jt -pt or --journey-tests --performance-tests      Trigger local test run of all test suites"
+      echo "Any valid docker compose down argument"
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-backend && \
+  docker compose up -d
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-frontend && \
+  docker compose up -d
+
+echo "Waiting for fcp-mpdp-frontend-localstack to become healthy..."
+until docker compose ps localstack | grep "healthy" >/dev/null; do
+  echo "fcp-mpdp-frontend-localstack not healthy yet, waiting 3 seconds..."
+  sleep 
+done
+echo "fcp-mpdp-frontend-localstack is healthy."
+
+if [ "$run_journey_tests" = true ]; then
+  echo "Starting fcp-mpdp-journey-test-suite..."
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-journey-test-suite && \
+  echo "Running journey tests..."
+  npm run test:local
+fi
+
+if [ "$run_performance_tests" = true ]; then
+  echo "Starting fcp-mpdp-performance-test-suite..."
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-performance-test-suite && \
+  echo "Running performance tests..."
+  ./test.sh
+fi

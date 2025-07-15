@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+echo 'fcp-mpdp-backend' &&
+  curl --silent "https://api.github.com/repos/defra/fcp-mpdp-backend/tags" | 
+  grep '"name":' | 
+  head -n 1 | 
+  sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'fcp-mpdp-frontend' &&
+  curl --silent "https://api.github.com/repos/defra/fcp-mpdp-frontend/tags" | 
+  grep '"name":' | 
+  head -n 1 | 
+  sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'fcp-mpdp-journey-test-suite' &&
+  curl --silent "https://api.github.com/repos/defra/fcp-mpdp-journey-test-suite/tags" | 
+  grep '"name":' | 
+  head -n 1 | 
+  sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'fcp-mpdp-performance-test-suite' &&
+  curl --silent "https://api.github.com/repos/defra/fcp-mpdp-performance-test-suite/tags" | 
+  grep '"name":' | 
+  head -n 1 | 
+  sed -E 's/.*"([^"]+)".*/\1/'

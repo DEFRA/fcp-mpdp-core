@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-backend && \
+  docker compose down $@
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-frontend && \
+  docker compose down $@
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-performance-test-suite && \
+  docker compose down $@

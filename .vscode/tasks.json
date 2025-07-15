@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: help",
+      "command": "./help"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: clone",
+      "command": "./clone"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: update",
+      "command": "./update"
+    },   
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: pull",
+      "command": "./pull"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: build",
+      "command": "./build"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: start",
+      "command": "./start"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: start & run journey test suite",
+      "command": "./start -jt"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: start & run performance test suite",
+      "command": "./start -pt"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: start & run all test suites",
+      "command": "./start -jt -pt"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: stop",
+      "command": "./stop"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: open",
+      "command": "./open"
+    },
+    {
+      "type": "shell",
+      "label": "fcp-mpdp-core: version",
+      "command": "./version"
+    }
+  ]
+}
