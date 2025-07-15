@@ -36,12 +36,12 @@ cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
 
-echo "Waiting for fcp-mpdp-frontent-localstack to become healthy..."
+echo "Waiting for fcp-mpdp-frontend-localstack to become healthy..."
 until docker compose ps localstack | grep "healthy" >/dev/null; do
-  echo "fcp-mpdp-frontent-localstack not healthy yet, waiting 3 seconds..."
+  echo "fcp-mpdp-frontend-localstack not healthy yet, waiting 3 seconds..."
   sleep 
 done
-echo "fcp-mpdp-frontent-localstack is healthy."
+echo "fcp-mpdp-frontend-localstack is healthy."
 
 if [ "$run_journey_tests" = true ]; then
   echo "Starting fcp-mpdp-journey-test-suite..."
