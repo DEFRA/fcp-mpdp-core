@@ -11,6 +11,8 @@ To summarise the following prerequisites should be met, but ensure you refer to 
 [fcp-mpdp-frontend](https://github.com/DEFRA/fcp-mpdp-frontend)  
 [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite)  
 [fcp-mpdp-performance-test-suite](https://github.com/DEFRA/fcp-mpdp-performance-test-suite)
+## Architecture
+There are several diagrams illustrating the architecture for MPDP that are available on [Confluence](https://eaflood.atlassian.net/wiki/spaces/MAKING/pages/5746229435/Architecture).
 ## Scripts
 ### Help
 List all available commands.  
@@ -49,3 +51,18 @@ List latest GitHub release/tag version for each microservice.
 ## VS Code Command Palette
 For Visual Studio Code users, all of the above commands can be run from the VS Code command palette:  
 `ctrl` + `shift` + `P` (or `cmd` + `shift` + `P` for Mac users) > Tasks: Run Task > Select the task you want to run.
+## Licence
+
+THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:
+
+<http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3>
+
+The following attribution statement MUST be cited in your products and applications when using this information.
+
+> Contains public sector information licensed under the Open Government license v3
+
+### About the licence
+
+The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.
+
+It is designed to encourage use and re-use of information freely and flexibly, with only a few conditions.
