@@ -11,6 +11,8 @@ To summarise the following prerequisites should be met, but ensure you refer to 
 [fcp-mpdp-frontend](https://github.com/DEFRA/fcp-mpdp-frontend)  
 [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite)  
 [fcp-mpdp-performance-test-suite](https://github.com/DEFRA/fcp-mpdp-performance-test-suite)
+## Architecture
+There are several diagrams illustrating the architecture for MPDP that are available on [Confluence](https://eaflood.atlassian.net/wiki/spaces/MAKING/pages/5746229435/Architecture).
 ## Scripts
 ### Help
 List all available commands.  
