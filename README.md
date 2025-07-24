@@ -81,7 +81,8 @@ List latest GitHub release/tag version for each microservice.
 
 ### Seed
 
-Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for the purposes of local development. There is no need to interact with this script directly as it is executed via the [`start`](#start) script.
+Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for the purposes of local development. There is no need to interact with this script directly as it is executed via the [`start`](#start) script.  
+[`./seed`](./seed)
 
 ## VS Code Command Palette
 
