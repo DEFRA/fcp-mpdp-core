@@ -9,5 +9,8 @@ cd "${projectRoot}"
 docker cp fcp-mpdp-core/data fcp-mpdp-backend-fcp-mpdp-backend-1:/tmp/data
 docker cp fcp-mpdp-core/package.json fcp-mpdp-backend-fcp-mpdp-backend-1:/tmp/package.json
 
+echo "Seeding database..."
+
 docker exec fcp-mpdp-backend-fcp-mpdp-backend-1 sh -c "cd /tmp && npm install && npm run seed"
+
 echo "Database seeded successfully"

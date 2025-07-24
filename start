@@ -42,7 +42,6 @@ cd ./fcp-mpdp-frontend && \
   docker compose up -d
 
 if [ "$seed_database" = true ]; then
-  echo "Seeding database..."
   cd "${projectRoot}"
   ./fcp-mpdp-core/seed
 fi
