@@ -79,6 +79,10 @@ Open all microservices in Visual Studio Code.
 List latest GitHub release/tag version for each microservice.  
 [`./version`](./version)
 
+### Seed
+
+Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for the purposes of local development. There is no need to interact with this script directly as it is executed via the [`start`](#start) script.
+
 ## VS Code Command Palette
 
 For Visual Studio Code users, all of the above commands can be run from the VS Code command palette:  
