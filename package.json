@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "description": "Local development support for orchestrating all MPDP microservices.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "type": "module",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DEFRA/fcp-mpdp-core.git"
@@ -17,6 +16,6 @@
   },
   "homepage": "https://github.com/DEFRA/fcp-mpdp-core#readme",
   "dependencies": {
-    "@faker-js/faker": "github:faker-js/faker"
+    "@faker-js/faker": "^9.9.0"
   }
 }
