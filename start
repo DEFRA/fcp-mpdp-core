@@ -41,9 +41,6 @@ cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
 
-echo "Waiting for services to be ready..."
-sleep 5
-
 if [ "$seed_database" = true ]; then
   echo "Seeding database with fake data..."
   cd "${projectRoot}"
