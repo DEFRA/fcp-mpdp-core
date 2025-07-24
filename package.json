@@ -4,7 +4,9 @@
   "description": "Local development support for orchestrating all MPDP microservices.",
   "main": "index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "data": "node data.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DEFRA/fcp-mpdp-core.git"
