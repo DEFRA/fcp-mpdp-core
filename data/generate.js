@@ -19,4 +19,3 @@ function generateFakePaymentActivityData() {
 }
 
 const records = Array.from({ length: 100 }, generateFakePaymentActivityData)
-console.log('🪵 | records:', records)
