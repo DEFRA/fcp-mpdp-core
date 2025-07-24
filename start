@@ -14,7 +14,7 @@ while [[ "$#" -gt 0 ]]; do
     -pt|--performance-tests)
       run_performance_tests=true
       ;;
-    -s|--sed)
+    -s|--seed)
       seed_database=true
       ;;
     *)

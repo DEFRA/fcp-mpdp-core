@@ -54,14 +54,10 @@ function generateFakeAggregateSchemePaymentsData() {
   }
 }
 
-// const paymentActivityDataRecords = Array.from({ length: 100 }, generateFakePaymentActivityData)
-// const aggregateSchemePaymentsRecords = Array.from({ length: 3 }, generateFakeAggregateSchemePaymentsData)
-
 async function seed() {
   const client = await pool.connect()
 
   try {
-    console.log('Seeding payment_activity_data...')
     for (let i = 0; i < 100; i++) {
       const record = generateFakePaymentActivityData()
       await client.query(
@@ -84,7 +80,6 @@ async function seed() {
       )
     }
 
-    console.log('Seeding aggregate_scheme_payments...')
     for (let i = 0; i < 3; i++) {
       const record = generateFakeAggregateSchemePaymentsData()
       await client.query(
@@ -99,7 +94,6 @@ async function seed() {
       )
     }
 
-    console.log('Seeding complete.')
   } catch (error) {
     console.error('Error during seeding:', error)
   } finally {
