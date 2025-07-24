@@ -1,6 +1,22 @@
 import { faker } from '@faker-js/faker'
-import { schemes } from './schemes.js'
-import { schemeDetails } from './scheme-details.js'
+
+const schemes = [
+  'Farming Resilience Fund',
+  'Landscape Recovery',
+  'New Entrants Pilot',
+  'Sustainable Farming Incentive',
+  'Countryside Stewardship',
+  'Farming Investment Fund'
+]
+
+const schemeDetails = [
+  'Farming advice and business support',
+  'Staff cost',
+  'Travel and subsistence',
+  'Equipment',
+  'Surveying',
+  'Administration'
+]
 
 function generateFakePaymentActivityData() {
   return {
