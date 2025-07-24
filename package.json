@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "seed": "node data.js"
+    "seed": "node data/seed.js"
   },
   "repository": {
     "type": "git",
