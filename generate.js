@@ -26,12 +26,22 @@ function generateFakePaymentActivityData() {
     parliamentary_constituency: faker.location.city(),
     county_council: faker.location.county(),
     scheme: faker.helpers.arrayElement(schemes),
-    amount: faker.finance.amount({ min: 0, max: 99999999999999.99, dec: 2 }),
+    amount: faker.finance.amount({ min: 0, max: 100000.99, dec: 2 }),
     financial_year: '23/24',
-    payment_date: faker.date.between({ from: '2023-01-01', to: '2024-12-31' }),
+    payment_date: faker.date.between({ from: '2023-01-01', to: '2024-12-31' }).toISOString().split('T')[0],
     scheme_detail: faker.helpers.arrayElement(schemeDetails),
     activity_level: ''
   }
 }
 
-const records = Array.from({ length: 100 }, generateFakePaymentActivityData)
+function generateFakeAggregateSchemePaymentsData() {
+  return {
+    id: faker.number.int({ min: 1, max: 9 }),
+    financial_year: '23/24',
+    scheme: faker.helpers.arrayElement(schemes),
+    total_amount: faker.finance.amount({ min: 0, max: 100000.99, dec: 2 })
+  }
+}
+
+const paymentActivityDataRecords = Array.from({ length: 100 }, generateFakePaymentActivityData)
+const aggregateSchemePaymentsRecords = Array.from({ length: 3 }, generateFakeAggregateSchemePaymentsData)
