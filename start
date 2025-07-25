@@ -2,6 +2,7 @@
 
 set -e
 
+seed_database=false
 run_journey_tests=false
 run_performance_tests=false
 
@@ -13,9 +14,13 @@ while [[ "$#" -gt 0 ]]; do
     -pt|--performance-tests)
       run_performance_tests=true
       ;;
+    -s|--seed)
+      seed_database=true
+      ;;
     *)
       echo "Unknown option: $1"
       echo "Valid options:"
+      echo "  -s or --seed                                        Seed backend PostgreSQL database with fake data"
       echo "  -jt or --journey-tests                              Trigger local test run of journey test suite"
       echo "  -pt or --performance--tests                         Trigger local test run of performance test suite"
       echo "  -jt -pt or --journey-tests --performance-tests      Trigger local test run of all test suites"
@@ -35,6 +40,11 @@ cd ./fcp-mpdp-backend && \
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
+
+if [ "$seed_database" = true ]; then
+  cd "${projectRoot}"
+  ./fcp-mpdp-core/seed
+fi
 
 if [ "$run_journey_tests" = true ]; then
   echo "Starting fcp-mpdp-journey-test-suite..."
