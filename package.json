@@ -11,7 +11,7 @@
     "url": "git+https://github.com/DEFRA/fcp-mpdp-core.git"
   },
   "author": "Defra",
-  "license": "ISC",
+  "license": "OGL-UK-3.0",
   "bugs": {
     "url": "https://github.com/DEFRA/fcp-mpdp-core/issues"
   },
