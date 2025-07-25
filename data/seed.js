@@ -27,7 +27,7 @@ async function seed() {
       )
     }
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 2; i++) {
       const record = generateFakeAggregateSchemePaymentsData()
       await dbClient.query(
         `INSERT INTO aggregate_scheme_payments
