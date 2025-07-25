@@ -1,8 +1,5 @@
 import { faker } from '@faker-js/faker'
-import {
-  schemes,
-  schemeDetails
-} from './constants.js'
+import { schemes, schemeDetails } from './constants.js'
 
 export function generateFakePaymentActivityData() {
   return {

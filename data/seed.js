@@ -1,8 +1,5 @@
 import { dbClient } from './db-client.js'
-import {
-  generateFakePaymentActivityData,
-  generateFakeAggregateSchemePaymentsData
-} from './generate-data.js'
+import { generateFakePaymentActivityData, generateFakeAggregateSchemePaymentsData } from './generate-data.js'
 
 async function seed() {
   await dbClient.connect()
