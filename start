@@ -20,7 +20,7 @@ while [[ "$#" -gt 0 ]]; do
     *)
       echo "Unknown option: $1"
       echo "Valid options:"
-      echo "  -s or --seed                                        Seed PostgreSQL database with fake data"
+      echo "  -s or --seed                                        Seed backend PostgreSQL database with fake data"
       echo "  -jt or --journey-tests                              Trigger local test run of journey test suite"
       echo "  -pt or --performance--tests                         Trigger local test run of performance test suite"
       echo "  -jt -pt or --journey-tests --performance-tests      Trigger local test run of all test suites"
