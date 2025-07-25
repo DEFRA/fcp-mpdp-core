@@ -12,17 +12,17 @@ async function seed() {
         (payee_name, part_postcode, town, parliamentary_constituency, county_council, scheme, amount, financial_year, payment_date, scheme_detail, activity_level)
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
         [
-          record.payee_name,
-          record.part_postcode,
+          record.payeeName,
+          record.partPostcode,
           record.town,
-          record.parliamentary_constituency,
-          record.county_council,
+          record.parliamentaryConstituency,
+          record.countyCouncil,
           record.scheme,
           record.amount,
-          record.financial_year,
-          record.payment_date,
-          record.scheme_detail,
-          record.activity_level
+          record.financialYear,
+          record.paymentDate,
+          record.schemeDetail,
+          record.activityLevel
         ]
       )
     }
@@ -34,9 +34,9 @@ async function seed() {
         (financial_year, scheme, total_amount)
         VALUES ($1,$2,$3)`,
         [
-          record.financial_year,
+          record.financialYear,
           record.scheme,
-          record.total_amount
+          record.totalAmount
         ]
       )
     }
