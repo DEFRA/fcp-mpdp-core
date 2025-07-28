@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/DEFRA/fcp-mpdp-core#readme",
   "dependencies": {
-    "@faker-js/faker": "^9.9.0",
-    "pg": "^8.16.3"
+    "@faker-js/faker": "9.9.0",
+    "pg": "8.16.3"
   }
 }
