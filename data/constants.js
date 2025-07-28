@@ -15,3 +15,8 @@ export const schemeDetails = [
   'Surveying',
   'Administration'
 ]
+
+export const yearlyTotalSchemes = [
+  'Tree Health',
+  'Animal (Formerly Annual) Health and Welfare Review'
+]

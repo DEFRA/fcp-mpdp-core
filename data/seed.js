@@ -1,5 +1,6 @@
 import { dbClient } from './db-client.js'
 import { generateFakePaymentActivityData, generateFakeAggregateSchemePaymentsData } from './generate-data.js'
+import { yearlyTotalSchemes } from './constants.js'
 
 async function seed() {
   await dbClient.connect()
@@ -27,8 +28,8 @@ async function seed() {
       )
     }
 
-    for (let i = 0; i < 2; i++) {
-      const record = generateFakeAggregateSchemePaymentsData()
+    for (const scheme of yearlyTotalSchemes) {
+      const record = generateFakeAggregateSchemePaymentsData(scheme)
       await dbClient.query(
         `INSERT INTO aggregate_scheme_payments
         (financial_year, scheme, total_amount)
