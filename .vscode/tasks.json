@@ -33,6 +33,11 @@
     },
     {
       "type": "shell",
+      "label": "fcp-mpdp-core: start & seed PostgreSQL database",
+      "command": "./start -s"
+    },
+    {
+      "type": "shell",
       "label": "fcp-mpdp-core: start & run journey test suite",
       "command": "./start -jt"
     },

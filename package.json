@@ -1,0 +1,23 @@
+{
+  "name": "fcp-mpdp-core",
+  "version": "0.0.0",
+  "description": "Local development support for orchestrating all MPDP microservices.",
+  "type": "module",
+  "scripts": {
+    "seed": "node data/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEFRA/fcp-mpdp-core.git"
+  },
+  "author": "Defra",
+  "license": "OGL-UK-3.0",
+  "bugs": {
+    "url": "https://github.com/DEFRA/fcp-mpdp-core/issues"
+  },
+  "homepage": "https://github.com/DEFRA/fcp-mpdp-core#readme",
+  "dependencies": {
+    "@faker-js/faker": "9.9.0",
+    "pg": "8.16.3"
+  }
+}
