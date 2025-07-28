@@ -34,15 +34,8 @@ done
 projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
 
 cd "${projectRoot}"
-cd ./fcp-mpdp-backend
-
-if [ "$seed_database" = true ]; then
-  echo "Resetting fcp-mpdp-backend database..."
-  docker compose down -v
-  echo "fcp-mpdp-backend database now cleared"
-fi
-
-docker compose up -d
+cd ./fcp-mpdp-backend && \
+  docker compose up -d
 
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \

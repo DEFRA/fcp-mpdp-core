@@ -6,6 +6,8 @@ async function seed() {
   await dbClient.connect()
 
   try {
+    await dbClient.query(`TRUNCATE payment_activity_data, aggregate_scheme_payments RESTART IDENTITY;`)
+
     for (let i = 0; i < 100; i++) {
       const record = generateFakePaymentActivityData()
       await dbClient.query(
