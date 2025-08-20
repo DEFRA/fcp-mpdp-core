@@ -57,9 +57,10 @@ Run all services in detached mode.
 
 Any valid `docker compose down` argument.  
 `-s` or `--seed` to seed the PostgreSQL database for `fcp-mpdp-backend` with fake data.  
-`-jt` or `--journey-tests` to run the journey test suite.  
+`-jt` or `--journey-tests` to run the journey test suite with Playwright only.  
+`-jt-b` or `--journey-tests-browserstack` to run the journey test suite with Playwright + BrowserStack.  
 `-pt` or `--performance-tests` to run the performance test suite.  
-`-jt -pt` or `--journey-tests --performance-tests` to run all test suites.
+Any combination of the above options.
 
 ### Seed
 

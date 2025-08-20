@@ -4,12 +4,16 @@ set -e
 
 seed_database=false
 run_journey_tests=false
+run_journey_tests_with_browserstack=false
 run_performance_tests=false
 
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
     -jt|--journey-tests)
       run_journey_tests=true
+      ;;
+    -jt-b|--journey-test-browserstack)
+      run_journey_tests_with_browserstack=true
       ;;
     -pt|--performance-tests)
       run_performance_tests=true
@@ -52,6 +56,14 @@ if [ "$run_journey_tests" = true ]; then
   cd ./fcp-mpdp-journey-test-suite && \
   echo "Running journey tests..."
   npm run test:local
+fi
+
+if [ "$run_journey_tests_with_browserstack" = true ]; then
+  echo "Starting fcp-mpdp-journey-test-suite..."
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-journey-test-suite && \
+  echo "Running journey tests with BrowserStack..."
+  npm run test:local:browserstack
 fi
 
 if [ "$run_performance_tests" = true ]; then
