@@ -8,7 +8,7 @@ async function seed() {
   try {
     await dbClient.query(`TRUNCATE payment_activity_data, aggregate_scheme_payments RESTART IDENTITY;`)
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 5000; i++) {
       const record = generateFakePaymentActivityData()
       await dbClient.query(
         `INSERT INTO payment_activity_data
