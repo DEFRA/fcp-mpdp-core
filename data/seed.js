@@ -1,5 +1,6 @@
 import { dbClient } from './db-client.js'
 import { generateFakePaymentActivityData, generateFakeAggregateSchemePaymentsData } from './generate-data.js'
+import { testData } from './test-data.js'
 import { yearlyTotalSchemes } from './constants.js'
 
 async function seed() {
@@ -7,6 +8,26 @@ async function seed() {
 
   try {
     await dbClient.query(`TRUNCATE payment_activity_data, aggregate_scheme_payments RESTART IDENTITY;`)
+
+    // Insert known record so journey tests are consistent locally and in CDP's test environment
+    await dbClient.query(
+      `INSERT INTO payment_activity_data
+      (payee_name, part_postcode, town, parliamentary_constituency, county_council, scheme, amount, financial_year, payment_date, scheme_detail, activity_level)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+      [
+        testData.payeeName,
+        testData.partPostcode,
+        testData.town,
+        testData.parliamentaryConstituency,
+        testData.countyCouncil,
+        testData.scheme,
+        testData.amount,
+        testData.financialYear,
+        testData.paymentDate,
+        testData.schemeDetail,
+        testData.activityLevel
+      ]
+    )
 
     for (let i = 0; i < 5000; i++) {
       const record = generateFakePaymentActivityData()
