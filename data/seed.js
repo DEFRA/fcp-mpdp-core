@@ -1,5 +1,6 @@
 import { dbClient } from './db-client.js'
 import { generateFakePaymentActivityData, generateFakeAggregateSchemePaymentsData } from './generate-data.js'
+import { testData } from './test-data.js'
 import { yearlyTotalSchemes } from './constants.js'
 
 async function seed() {
@@ -14,17 +15,17 @@ async function seed() {
       (payee_name, part_postcode, town, parliamentary_constituency, county_council, scheme, amount, financial_year, payment_date, scheme_detail, activity_level)
       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
       [
-        'Feeney and Sons',
-        'GO15',
-        'Alekfield',
-        'Funkfield',
-        'Cleveland',
-        'Farming Resilience Fund',
-        33577.90,
-        '23/24',
-        '2024-04-22',
-        'Staff cost',
-        ''
+        testData.payeeName,
+        testData.partPostcode,
+        testData.town,
+        testData.parliamentaryConstituency,
+        testData.countyCouncil,
+        testData.scheme,
+        testData.amount,
+        testData.financialYear,
+        testData.paymentDate,
+        testData.schemeDetail,
+        testData.activityLevel
       ]
     )
 

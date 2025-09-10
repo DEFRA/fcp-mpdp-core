@@ -23,35 +23,29 @@ There are several diagrams illustrating the architecture for MPDP that are avail
 
 ## Scripts
 
-### Help
+### [Help](./help)
 
 List all available commands.  
-[`./help`](./help)
 
-### Clone
+### [Clone](./clone)
 
 Clone all repositories from GitHub. Repositories will be cloned in the parent directory of this repository.  
-[`./clone`](./clone)
 
-### Update
+### [Update](./update)
 
 Switch to main branch in every repository and pull latest changes with `git pull`.  
-[`./update`](./update)
 
-### Pull
+### [Pull](./pull)
 
 Pull latest changes from current branch in every repository with `git pull`.  
-[`./pull`](./pull)
 
-### Build
+### [Build](./build)
 
 Build/rebuild Docker container for all microservices.  
-[`./build`](./build)
 
-### Start
+### [Start](./start)
 
 Run all services in detached mode.  
-[`./start`](./start)
 
 #### Optional arguments 
 
@@ -62,29 +56,26 @@ Any valid `docker compose down` argument.
 `-pt` or `--performance-tests` to run the performance test suite.  
 Any combination of the above options.
 
-### Seed
+### [Seed](./seed)
 
 Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for local development. There is no need to interact with this script directly as it can be executed as an optional argument via the [`start`](#start) script.  
-[`./seed`](./seed)
+To ensure the journey test suite passes both locally and during CI/CD on CDP, a `testData` object is used to insert a known record (i.e. one which already exists in all CDP databases excluding production). This object can be easily updated at any time to match any existing record in the CDP databases. If the `testData` object is updated, ensure to make the same changes to the `testData` object on [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite/blob/main/utils/test-data.js).  
 
-### Stop
+### [Stop](./stop)
 
 Stop all services.  
-[`./stop`](./stop)
 
 #### Optional arguments
 
 Any valid `docker compose down` argument.
 
-### Open
+### [Open](./open)
 
 Open all microservices in Visual Studio Code.  
-[`./open`](./open)
 
-### Version
+### [Version](./version)
 
 List latest GitHub release/tag version for each microservice.  
-[`./version`](./version)
 
 ## VS Code Command Palette
 
