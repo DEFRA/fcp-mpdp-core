@@ -55,7 +55,7 @@ if [ "$run_journey_tests" = true ]; then
   cd "${projectRoot}"
   cd ./fcp-mpdp-journey-test-suite && \
   echo "Running journey tests..."
-  npm run test:local
+  npm run docker:test:local
 fi
 
 if [ "$run_journey_tests_with_browserstack" = true ]; then
@@ -63,7 +63,7 @@ if [ "$run_journey_tests_with_browserstack" = true ]; then
   cd "${projectRoot}"
   cd ./fcp-mpdp-journey-test-suite && \
   echo "Running journey tests with BrowserStack..."
-  npm run test:local:browserstack
+  npm run docker:test:local:browserstack
 fi
 
 if [ "$run_performance_tests" = true ]; then

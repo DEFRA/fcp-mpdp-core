@@ -23,3 +23,8 @@ cd "${projectRoot}"
 cd ./fcp-mpdp-performance-test-suite && \
   git checkout main && \
   git pull
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-postcodes && \
+  git checkout main && \
+  git pull
