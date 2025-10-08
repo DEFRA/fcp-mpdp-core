@@ -21,7 +21,6 @@ test -d fcp-mpdp-journey-test-suite\
 test -d fcp-mpdp-performance-test-suite\
   && >&2 echo "fcp-mpdp-performance-test-suite repository already exists. Skipping." \
   || git clone https://github.com/DEFRA/fcp-mpdp-performance-test-suite.git
-  || git clone https://github.com/DEFRA/fcp-mpdp-journey-test-suite.git
 
 test -d fcp-mpdp-postcodes\
   && >&2 echo "fcp-mpdp-postcodes repository already exists. Skipping." \
