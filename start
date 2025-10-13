@@ -54,16 +54,18 @@ if [ "$run_journey_tests" = true ]; then
   echo "Starting fcp-mpdp-journey-test-suite..."
   cd "${projectRoot}"
   cd ./fcp-mpdp-journey-test-suite && \
-  echo "Running journey tests..."
-  npm run test:local
+  echo "Running journey tests (Playwright only)..."
+  docker compose build
+  npm run docker:test:local
 fi
 
 if [ "$run_journey_tests_with_browserstack" = true ]; then
   echo "Starting fcp-mpdp-journey-test-suite..."
   cd "${projectRoot}"
   cd ./fcp-mpdp-journey-test-suite && \
-  echo "Running journey tests with BrowserStack..."
-  npm run test:local:browserstack
+  echo "Running journey tests (Playwright + BrowserStack)..."
+  docker compose build
+  npm run docker:test:local:browserstack
 fi
 
 if [ "$run_performance_tests" = true ]; then

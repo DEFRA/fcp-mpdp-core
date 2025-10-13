@@ -10,3 +10,4 @@ code ./fcp-mpdp-backend;
 code ./fcp-mpdp-frontend;
 code ./fcp-mpdp-journey-test-suite;
 code ./fcp-mpdp-performance-test-suite;
+code ./fcp-mpdp-postcodes;

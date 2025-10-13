@@ -19,3 +19,7 @@ cd ./fcp-mpdp-journey-test-suite && \
 cd "${projectRoot}"
 cd ./fcp-mpdp-performance-test-suite && \
   git pull
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-postcodes && \
+  git pull
