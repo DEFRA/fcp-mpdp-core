@@ -14,6 +14,10 @@ test -d fcp-mpdp-frontend\
   && >&2 echo "fcp-mpdp-frontend repository already exists. Skipping." \
   || git clone https://github.com/DEFRA/fcp-mpdp-frontend.git
 
+test -d fcp-mpdp-admin\
+  && >&2 echo "fcp-mpdp-admin repository already exists. Skipping." \
+  || git clone https://github.com/DEFRA/fcp-mpdp-admin.git
+
 test -d fcp-mpdp-journey-test-suite\
   && >&2 echo "fcp-mpdp-journey-test-suite repository already exists. Skipping." \
   || git clone https://github.com/DEFRA/fcp-mpdp-journey-test-suite.git
