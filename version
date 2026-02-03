@@ -14,6 +14,12 @@ echo 'fcp-mpdp-frontend' &&
   head -n 1 | 
   sed -E 's/.*"([^"]+)".*/\1/'
 
+echo 'fcp-mpdp-admin' &&
+  curl --silent "https://api.github.com/repos/defra/fcp-mpdp-admin/tags" | 
+  grep '"name":' | 
+  head -n 1 | 
+  sed -E 's/.*"([^"]+)".*/\1/'
+
 echo 'fcp-mpdp-journey-test-suite' &&
   curl --silent "https://api.github.com/repos/defra/fcp-mpdp-journey-test-suite/tags" | 
   grep '"name":' | 

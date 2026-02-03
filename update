@@ -15,6 +15,11 @@ cd ./fcp-mpdp-frontend && \
   git pull
 
 cd "${projectRoot}"
+cd ./fcp-mpdp-admin && \
+  git checkout main && \
+  git pull
+
+cd "${projectRoot}"
 cd ./fcp-mpdp-journey-test-suite && \
   git checkout main && \
   git pull

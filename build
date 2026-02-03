@@ -11,3 +11,7 @@ cd ./fcp-mpdp-backend && \
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose build
+
+cd "${projectRoot}"
+cd ./fcp-mpdp-admin && \
+  docker compose build

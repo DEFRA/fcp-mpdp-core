@@ -45,6 +45,10 @@ cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
   docker compose up -d
 
+cd "${projectRoot}"
+cd ./fcp-mpdp-admin && \
+  docker compose up -d
+
 if [ "$seed_database" = true ]; then
   cd "${projectRoot}"
   ./fcp-mpdp-core/seed
