@@ -3,12 +3,16 @@
 set -e
 
 seed_database=false
+use_docker=false
 run_journey_tests=false
 run_journey_tests_with_browserstack=false
 run_performance_tests=false
 
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
+    --docker)
+      use_docker=true
+      ;;
     -jt|--journey-tests)
       run_journey_tests=true
       ;;
@@ -24,11 +28,11 @@ while [[ "$#" -gt 0 ]]; do
     *)
       echo "Unknown option: $1"
       echo "Valid options:"
+      echo "  --docker                                            Run all apps in Docker (default: host-native)"
       echo "  -s or --seed                                        Seed backend PostgreSQL database with fake data"
       echo "  -jt or --journey-tests                              Trigger local test run of journey test suite"
-      echo "  -pt or --performance--tests                         Trigger local test run of performance test suite"
+      echo "  -pt or --performance-tests                          Trigger local test run of performance test suite"
       echo "  -jt -pt or --journey-tests --performance-tests      Trigger local test run of all test suites"
-      echo "Any valid docker compose down argument"
       exit 1
       ;;
   esac
@@ -37,21 +41,44 @@ done
 
 projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
 
-cd "${projectRoot}"
-cd ./fcp-mpdp-backend && \
-  docker compose --profile app up -d
-
-cd "${projectRoot}"
-cd ./fcp-mpdp-frontend && \
-  docker compose --profile app up -d
-
-cd "${projectRoot}"
-cd ./fcp-mpdp-admin && \
-  docker compose --profile app up -d
-
-if [ "$seed_database" = true ]; then
+if [ "$use_docker" = true ]; then
   cd "${projectRoot}"
-  ./fcp-mpdp-core/seed
+  cd ./fcp-mpdp-backend && \
+    docker compose --profile app up -d
+
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-frontend && \
+    docker compose --profile app up -d
+
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-admin && \
+    docker compose --profile app up -d
+
+  if [ "$seed_database" = true ]; then
+    cd "${projectRoot}"
+    ./fcp-mpdp-core/seed --docker
+  fi
+else
+  # Host-native: start dependency containers only (no app profile)
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-backend && docker compose up -d
+
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-admin && docker compose up -d
+
+  if [ "$seed_database" = true ]; then
+    cd "${projectRoot}"
+    ./fcp-mpdp-core/seed
+  fi
+
+  echo ""
+  echo "Dependency containers are up. To start the apps host-native:"
+  echo ""
+  echo "  1. Open the workspace:  code ${projectRoot}/fcp-mpdp-core/fcp-mpdp.code-workspace"
+  echo "  2. Run the task:        Ctrl+Shift+P > Tasks: Run Task > Local: Start all"
+  echo ""
+  echo "Or start each app individually from its directory with: npm run local"
+  echo ""
 fi
 
 if [ "$run_journey_tests" = true ]; then

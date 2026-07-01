@@ -18,10 +18,10 @@ All services are cloned as siblings to this repository.
 
 ### Repository Purpose
 - **Not deployable** - Development tooling only
-- Runs `docker compose` commands across multiple repositories
-- Seeds database with test data (Faker.js)
+- Runs dependency containers (Postgres, Redis) and optionally the full app stack in Docker
+- Seeds database with test data (Faker.js) — runs host-native against localhost:5432 by default
 - Launches test suites
-- Opens all services in VS Code
+- Provides `fcp-mpdp.code-workspace` for opening all services in VS Code with compound run tasks
 
 ## Standards & Guidelines
 
@@ -35,24 +35,28 @@ This project follows:
 ```bash
 ./help                       # List all available commands
 ./clone                      # Clone all MPDP repos from GitHub
-./build                      # Build Docker images for all services
-./start                      # Start all services in detached mode
-./start -s                   # Start + seed database with test data
-./start -jt                  # Start + run journey tests (Playwright)
-./start -pt                  # Start + run performance tests
-./start -jt -pt              # Start + run all test suites
-./stop                       # Stop all services
-./stop -v                    # Stop and remove volumes (clean state)
+./build                      # Build Docker images (needed for --docker and journey tests)
+./start                      # Start dependency containers (Postgres, Redis); print workspace instructions
+./start -s                   # Start deps + seed database (host-native, localhost:5432)
+./start --docker             # Start full app stack in Docker (previous default)
+./start --docker -s          # Start full stack in Docker + seed via container
+./start -jt                  # Start + run journey tests (Playwright) — requires --docker
+./start -pt                  # Start + run performance tests — requires --docker
+./stop                       # Stop dependency containers
+./stop --docker              # Stop full Docker app stack
+./stop --docker -v           # Stop and remove volumes (clean state)
 ./pull                       # Git pull current branch in all repos
 ./update                     # Switch to main + pull in all repos
 ./open                       # Open all services in VS Code
 ./version                    # Show latest GitHub tags for all services
 ```
 
-### VS Code Integration
-All scripts available via Command Palette:
-- `Ctrl+Shift+P` → Tasks: Run Task → Select script
-- Tasks defined in workspace configuration
+### VS Code workspace
+Open `fcp-mpdp.code-workspace` to get all four repos as a multi-root workspace with pre-configured tasks:
+- `code fcp-mpdp.code-workspace`
+- `Ctrl+Shift+P` → Tasks: Run Task → **Local: Start all** (runs all three apps host-native in parallel, each in its own terminal)
+- **Local: Seed** — seed the database from the workspace
+- Individual **Local: Backend / Frontend / Admin** tasks if you only need one service
 
 ## Data Seeding
 
@@ -80,10 +84,12 @@ Uses Faker.js to generate realistic payment data:
 ### Manual Seeding
 ```bash
 cd fcp-mpdp-core
-./seed                       # Or use ./start -s
+./seed                       # Host-native: seeds against localhost:5432 (requires Postgres up)
+./seed --docker              # Via container: execs into the running backend Docker container
+# Or use ./start -s (host-native) / ./start --docker -s (Docker)
 ```
 
-Database client: [data/db-client.js](../data/db-client.js)
+Database client: [data/db-client.js](../data/db-client.js) — configurable via `POSTGRES_HOST`, `POSTGRES_PORT`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` env vars; defaults to `localhost:5432`.
 
 ## Development Workflow
 
@@ -99,44 +105,34 @@ cd fcp-mpdp-core
 # 3. Install dependencies in each service
 cd ../fcp-mpdp-backend && npm install
 cd ../fcp-mpdp-frontend && npm install
-cd ../fcp-mpdp-admin && npm install
-
-# 4. Build Docker images
+cd ../fcp-mpdp-admin && npm install && cp .env.example .env
+# Fill in ENTRA_* credentials in fcp-mpdp-admin/.env
 cd ../fcp-mpdp-core
-./build
 
-# 5. Start everything with seeded data
+# 4. Start dependency containers and seed
 ./start -s
+
+# 5. Open the workspace and run all apps
+code fcp-mpdp.code-workspace
+# Ctrl+Shift+P > Tasks: Run Task > Local: Start all
 ```
 
 Services will be available at:
 - Frontend: http://localhost:3000
-- Admin: http://localhost:3002 (or check compose file)
 - Backend: http://localhost:3001
 - Backend Swagger: http://localhost:3001/swagger
+- Admin: http://localhost:3003
 - PostgreSQL: localhost:5432
+
+> **Admin prerequisite:** `fcp-mpdp-admin` requires real `ENTRA_*` credentials in its `.env` to start (Convict validates them at import time). This applies to both host-native and Docker workflows.
 
 ### Daily Development
 ```bash
-./update                     # Pull latest changes
-./build                      # Rebuild if Dockerfile/deps changed
-./start -s                   # Start with fresh data
-# Work in individual service repos
-./stop                       # When done
-```
-
-### Working on Individual Services
-```bash
-# Start full system
-./start -s
-
-# Stop one service to develop locally
-cd ../fcp-mpdp-frontend
-docker compose down
-npm run dev                  # Run outside Docker for faster iteration
-
-# Or develop inside Docker with hot reload
-npm run docker:dev
+./update                     # Pull latest changes in all repos
+./start -s                   # Start deps + seed
+code fcp-mpdp.code-workspace
+# Ctrl+Shift+P > Tasks: Run Task > Local: Start all
+./stop                       # When done (stops dep containers)
 ```
 
 ### Running Tests
@@ -211,7 +207,7 @@ docker inspect <container-name>
 
 ### Cleaning Up
 ```bash
-./stop -v                    # Stop and remove volumes
+./stop --docker -v           # Stop all Docker services and remove volumes
 docker system prune -a       # Remove all unused Docker resources (use carefully)
 ```
 
@@ -274,7 +270,7 @@ docker compose ps postgres
 docker compose logs postgres
 
 # Recreate database
-./stop -v && ./build && ./start -s
+./stop --docker -v && ./build && ./start --docker -s
 ```
 
 ### Services Won't Start

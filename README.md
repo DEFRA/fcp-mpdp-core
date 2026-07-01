@@ -30,6 +30,61 @@ npm run local              # start dependency containers and run the server
 
 Use this repository (`fcp-mpdp-core`) when you need to run all services together, seed the database with test data, or execute the journey/performance test suites.
 
+### Host-native (default)
+
+The default workflow runs the three apps directly on the host with hot reload. Only the stateful backing services (PostgreSQL, Redis) run in Docker.
+
+**First-time setup:**
+
+```bash
+./clone                    # clone all sibling repos
+cd ../fcp-mpdp-backend && npm install
+cd ../fcp-mpdp-frontend && npm install
+cd ../fcp-mpdp-admin && npm install && cp .env.example .env
+# fill in ENTRA_* credentials in fcp-mpdp-admin/.env
+```
+
+> **Admin prerequisite:** `fcp-mpdp-admin` uses OIDC authentication (Microsoft Entra). The app cannot start without real `ENTRA_TENANT_ID`, `ENTRA_CLIENT_ID`, `ENTRA_CLIENT_SECRET`, and related values in its `.env`. This is the same requirement as the Docker workflow.
+
+**Daily workflow:**
+
+```bash
+./start                    # start Postgres + Redis dependency containers
+./start -s                 # start deps and seed the database
+```
+
+Then open the workspace and run the compound task to start all three apps, each in its own terminal panel:
+
+```bash
+code fcp-mpdp.code-workspace
+# Ctrl+Shift+P > Tasks: Run Task > Local: Start all
+```
+
+Services will be available at:
+- Frontend: http://localhost:3000
+- Backend: http://localhost:3001
+- Backend Swagger: http://localhost:3001/swagger
+- Admin: http://localhost:3003
+- PostgreSQL: localhost:5432
+
+To stop the dependency containers:
+
+```bash
+./stop
+```
+
+### Docker (full-stack fallback)
+
+Use `--docker` to run everything in containers (the previous default). Requires `./build` first.
+
+```bash
+./build                    # build Docker images
+./start --docker           # start all services in Docker
+./start --docker -s        # start and seed
+./stop --docker            # stop all services
+./stop --docker -v         # stop and remove volumes (clean state)
+```
+
 ## Architecture
 
 There are several diagrams illustrating the architecture for MPDP that are available on [Confluence](https://eaflood.atlassian.net/wiki/spaces/MAKING/pages/5746229435/Architecture).
@@ -58,12 +113,12 @@ Build/rebuild Docker container for all microservices.
 
 ### [Start](./start)
 
-Run all services in detached mode.  
+By default, starts the dependency containers (PostgreSQL, Redis) only, then prints instructions to open the workspace and run `Local: Start all`. Pass `--docker` to run the full app stack in Docker instead.
 
-#### Optional arguments 
+#### Optional arguments
 
-Any valid `docker compose down` argument.  
-`-s` or `--seed` to seed the PostgreSQL database for `fcp-mpdp-backend` with fake data.  
+`--docker` to run all apps in Docker containers (previous default behaviour).  
+`-s` or `--seed` to seed the PostgreSQL database with fake data.  
 `-jt` or `--journey-tests` to run the journey test suite with Playwright only.  
 `-jt-b` or `--journey-tests-browserstack` to run the journey test suite with Playwright + BrowserStack.  
 `-pt` or `--performance-tests` to run the performance test suite.  
@@ -71,16 +126,23 @@ Any combination of the above options.
 
 ### [Seed](./seed)
 
-Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for local development. There is no need to interact with this script directly as it can be executed as an optional argument via the [`start`](#start) script.  
+Utilises [fakerjs](https://fakerjs.dev) to generate fake data to populate the backend PostgreSQL database for local development. The easiest way to run it is via `./start -s`. It can also be run directly:
+
+```bash
+./seed             # host-native: seeds against localhost:5432 (requires Postgres container up)
+./seed --docker    # via container: execs into the running fcp-mpdp-backend Docker container
+```
+
 To ensure the journey test suite passes both locally and during CI/CD on CDP, a `testData` object is used to insert a known record (i.e. one which already exists in all CDP databases excluding production). This object can be easily updated at any time to match any existing record in the CDP databases. If the `testData` object is updated, ensure to make the same changes to the `testData` object on [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite/blob/main/utils/test-data.js).  
 
 ### [Stop](./stop)
 
-Stop all services.  
+By default, stops the dependency containers only (Postgres, Redis). Pass `--docker` to stop the full app stack.
 
 #### Optional arguments
 
-Any valid `docker compose down` argument.
+`--docker` to stop all app containers (matches `./start --docker`).  
+Any valid `docker compose down` argument (e.g. `-v` to remove volumes).
 
 ### [Open](./open)
 
