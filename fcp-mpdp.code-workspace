@@ -1,0 +1,78 @@
+{
+  "folders": [
+    { "name": "fcp-mpdp-backend", "path": "../fcp-mpdp-backend" },
+    { "name": "fcp-mpdp-frontend", "path": "../fcp-mpdp-frontend" },
+    { "name": "fcp-mpdp-admin", "path": "../fcp-mpdp-admin" },
+    { "name": "fcp-mpdp-core", "path": "." }
+  ],
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Local: Backend",
+        "type": "shell",
+        "command": "npm run local",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-backend}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "local",
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
+        "label": "Local: Frontend",
+        "type": "shell",
+        "command": "npm run local",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-frontend}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "local",
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
+        "label": "Local: Admin",
+        "type": "shell",
+        "command": "npm run local",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-admin}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "local",
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
+        "label": "Local: Seed",
+        "type": "shell",
+        "command": "./seed",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-core}"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "group": "local",
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
+        "label": "Local: Start all",
+        "dependsOn": ["Local: Backend", "Local: Frontend", "Local: Admin"],
+        "dependsOrder": "parallel",
+        "problemMatcher": []
+      }
+    ]
+  }
+}

@@ -2,21 +2,44 @@
 
 set -e
 
+use_docker=false
+extra_args=()
+
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    --docker)
+      use_docker=true
+      ;;
+    *)
+      extra_args+=("$1")
+      ;;
+  esac
+  shift
+done
+
 projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
 
-cd "${projectRoot}"
-cd ./fcp-mpdp-backend && \
-  docker compose --profile app down $@
+if [ "$use_docker" = true ]; then
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-backend && \
+    docker compose --profile app down "${extra_args[@]}"
 
-cd "${projectRoot}"
-cd ./fcp-mpdp-frontend && \
-  docker compose --profile app down $@
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-frontend && \
+    docker compose --profile app down "${extra_args[@]}"
 
-cd "${projectRoot}"
-cd ./fcp-mpdp-admin && \
-  docker compose --profile app down $@
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-admin && \
+    docker compose --profile app down "${extra_args[@]}"
 
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-performance-test-suite && \
+    docker compose down "${extra_args[@]}"
+else
+  # Stop dependency containers only
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-backend && docker compose down "${extra_args[@]}"
 
-cd "${projectRoot}"
-cd ./fcp-mpdp-performance-test-suite && \
-  docker compose down $@
+  cd "${projectRoot}"
+  cd ./fcp-mpdp-admin && docker compose down "${extra_args[@]}"
+fi

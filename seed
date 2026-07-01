@@ -2,22 +2,44 @@
 
 set -e
 
+use_docker=false
+
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    --docker)
+      use_docker=true
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Valid options:"
+      echo "  --docker    Seed by exec-ing into the running fcp-mpdp-backend container"
+      exit 1
+      ;;
+  esac
+  shift
+done
+
 projectRoot=$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)
 
 cd "${projectRoot}"
 
-containerId=$(cd ./fcp-mpdp-backend && docker compose ps -q fcp-mpdp-backend)
+if [ "$use_docker" = true ]; then
+  containerId=$(cd ./fcp-mpdp-backend && docker compose ps -q fcp-mpdp-backend)
 
-if [ -z "${containerId}" ]; then
-  echo "Error: fcp-mpdp-backend container is not running. Start it first with ./start"
-  exit 1
+  if [ -z "${containerId}" ]; then
+    echo "Error: fcp-mpdp-backend container is not running. Start it first with ./start --docker"
+    exit 1
+  fi
+
+  docker cp fcp-mpdp-core/data "${containerId}":/tmp/data
+  docker cp fcp-mpdp-core/package.json "${containerId}":/tmp/package.json
+
+  echo "Seeding database (via container)..."
+
+  docker exec "${containerId}" sh -c "cd /tmp && npm install && npm run seed"
+else
+  echo "Seeding database (host-native, localhost:5432)..."
+  cd ./fcp-mpdp-core && npm run seed
 fi
-
-docker cp fcp-mpdp-core/data "${containerId}":/tmp/data
-docker cp fcp-mpdp-core/package.json "${containerId}":/tmp/package.json
-
-echo "Seeding database..."
-
-docker exec "${containerId}" sh -c "cd /tmp && npm install && npm run seed"
 
 echo "Database seeded successfully"
