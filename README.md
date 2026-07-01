@@ -30,7 +30,7 @@ npm run local              # start dependency containers and run the server
 
 Use this repository (`fcp-mpdp-core`) when you need to run all services together, seed the database with test data, or execute the journey/performance test suites.
 
-### Host-native (default)
+### Host-native
 
 The default workflow runs the three apps directly on the host with hot reload. Only the stateful backing services (PostgreSQL, Redis) run in Docker.
 
@@ -72,7 +72,7 @@ To stop the dependency containers:
 ./stop
 ```
 
-### Docker (full-stack fallback)
+### Docker
 
 Use `--docker` to run everything in containers. Requires `./build` first.
 
