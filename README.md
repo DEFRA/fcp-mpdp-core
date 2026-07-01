@@ -46,7 +46,7 @@ cd ../fcp-mpdp-admin && npm install && cp .env.example .env
 
 > **Admin prerequisite:** `fcp-mpdp-admin` uses OIDC authentication (Microsoft Entra). The app cannot start without real `ENTRA_TENANT_ID`, `ENTRA_CLIENT_ID`, `ENTRA_CLIENT_SECRET`, and related values in its `.env`. This is the same requirement as the Docker workflow.
 
-**Daily workflow:**
+**Workflow:**
 
 ```bash
 ./start                    # start Postgres + Redis dependency containers
@@ -75,7 +75,7 @@ To stop the dependency containers:
 
 ### Docker (full-stack fallback)
 
-Use `--docker` to run everything in containers (the previous default). Requires `./build` first.
+Use `--docker` to run everything in containers. Requires `./build` first.
 
 ```bash
 ./build                    # build Docker images
