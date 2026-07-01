@@ -6,12 +6,12 @@ projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; p
 
 cd "${projectRoot}"
 cd ./fcp-mpdp-backend && \
-  docker compose build
+  docker compose --profile app build
 
 cd "${projectRoot}"
 cd ./fcp-mpdp-frontend && \
-  docker compose build
+  docker compose --profile app build
 
 cd "${projectRoot}"
 cd ./fcp-mpdp-admin && \
-  docker compose build
+  docker compose --profile app build
