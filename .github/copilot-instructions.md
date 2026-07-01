@@ -157,7 +157,7 @@ npm run docker:dev
 Run per-service:
 ```bash
 cd ../fcp-mpdp-backend
-npm run docker:test
+npm test
 ```
 
 ## Project Structure
