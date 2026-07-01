@@ -36,13 +36,12 @@ This project follows:
 ./help                       # List all available commands
 ./clone                      # Clone all MPDP repos from GitHub
 ./build                      # Build Docker images (needed for --docker and journey tests)
-./start                      # Start dependency containers (Postgres, Redis); print workspace instructions
-./start -s                   # Start deps + seed database (host-native, localhost:5432)
+./start -s                   # Seed database (host-native, localhost:5432); starts Postgres first
 ./start --docker             # Start full app stack in Docker (previous default)
 ./start --docker -s          # Start full stack in Docker + seed via container
 ./start -jt                  # Start + run journey tests (Playwright) — requires --docker
 ./start -pt                  # Start + run performance tests — requires --docker
-./stop                       # Stop dependency containers
+./stop                       # Stop dependency containers (Postgres, Redis)
 ./stop --docker              # Stop full Docker app stack
 ./stop --docker -v           # Stop and remove volumes (clean state)
 ./pull                       # Git pull current branch in all repos
@@ -129,9 +128,9 @@ Services will be available at:
 ### Daily Development
 ```bash
 ./update                     # Pull latest changes in all repos
-./start -s                   # Start deps + seed
 code fcp-mpdp.code-workspace
 # Ctrl+Shift+P > Tasks: Run Task > Local: Start all
+# (each npm run local brings up its own dependency containers)
 ./stop                       # When done (stops dep containers)
 ```
 

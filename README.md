@@ -49,15 +49,14 @@ cd ../fcp-mpdp-admin && npm install && cp .env.example .env
 **Workflow:**
 
 ```bash
-./start                    # start Postgres + Redis dependency containers
-./start -s                 # start deps and seed the database
-```
-
-Then open the workspace and run the compound task to start all three apps, each in its own terminal panel:
-
-```bash
 code fcp-mpdp.code-workspace
 # Ctrl+Shift+P > Tasks: Run Task > Local: Start all
+```
+
+Each app's `npm run local` starts its own dependency containers (Postgres, Redis) automatically. No separate `./start` step is needed unless you want to seed the database first:
+
+```bash
+./start -s                 # seed the database, then open the workspace as above
 ```
 
 Services will be available at:
@@ -113,11 +112,11 @@ Build/rebuild Docker container for all microservices.
 
 ### [Start](./start)
 
-By default, starts the dependency containers (PostgreSQL, Redis) only, then prints instructions to open the workspace and run `Local: Start all`. Pass `--docker` to run the full app stack in Docker instead.
+For host-native development, the only reason to run this script is to seed the database (`-s`). Each app's `npm run local` handles its own dependency containers automatically. Pass `--docker` to run the full app stack in Docker instead.
 
 #### Optional arguments
 
-`--docker` to run all apps in Docker containers (previous default behaviour).  
+`--docker` to run all apps in Docker containers.  
 `-s` or `--seed` to seed the PostgreSQL database with fake data.  
 `-jt` or `--journey-tests` to run the journey test suite with Playwright only.  
 `-jt-b` or `--journey-tests-browserstack` to run the journey test suite with Playwright + BrowserStack.  
