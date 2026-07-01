@@ -5,17 +5,30 @@ Local development support for orchestrating all MPDP microservices.
 ## Prerequisites
 
 To summarise the following prerequisites should be met, but ensure you refer to and meet all the prerequisites for each individual repository:  
-- Node.js v22 or greater and NPM (Node Package Manager) v11 or greater. Easiest way to install both is to use NVM (Node Version Manager).  
+- Node.js v24 or greater and NPM (Node Package Manager) v11 or greater. Easiest way to install both is to use NVM (Node Version Manager).  
 - Docker
 - Docker Compose  
 - OpenJDK
 
 ## Repositories
 
+[fcp-mpdp-admin](https://github.com/DEFRA/fcp-mpdp-admin)  
 [fcp-mpdp-backend](https://github.com/DEFRA/fcp-mpdp-backend)  
 [fcp-mpdp-frontend](https://github.com/DEFRA/fcp-mpdp-frontend)  
 [fcp-mpdp-journey-test-suite](https://github.com/DEFRA/fcp-mpdp-journey-test-suite)  
 [fcp-mpdp-performance-test-suite](https://github.com/DEFRA/fcp-mpdp-performance-test-suite)
+
+## Development
+
+Each individual repository supports standalone host-native development without needing the full system:
+
+```bash
+nvm use && npm install     # install dependencies
+cp .env.example .env       # configure environment variables
+npm run local              # start dependency containers and run the server
+```
+
+Use this repository (`fcp-mpdp-core`) when you need to run all services together, seed the database with test data, or execute the journey/performance test suites.
 
 ## Architecture
 
