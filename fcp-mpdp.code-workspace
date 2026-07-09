@@ -76,6 +76,19 @@
         "problemMatcher": []
       },
       {
+        "label": "Test: Journey (docker)",
+        "type": "shell",
+        "command": "npm run docker:test:local",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-journey-test-suite}"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
         "label": "Test: Journey (local)",
         "type": "shell",
         "command": "npm run test:local",
