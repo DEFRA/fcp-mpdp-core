@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker'
 import { schemes, schemeDetails } from './constants.js'
 
+faker.seed(12345)
+
 export function generateFakePaymentActivityData() {
   return {
     payeeName: faker.company.name(),

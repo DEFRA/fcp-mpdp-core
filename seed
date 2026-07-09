@@ -43,3 +43,6 @@ else
 fi
 
 echo "Database seeded successfully"
+
+echo "Invalidating backend search cache..."
+curl -sf -X POST http://localhost:3001/v1/payments/admin/cache/invalidate || echo "Warning: Could not invalidate cache"

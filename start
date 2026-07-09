@@ -77,6 +77,18 @@ else
   echo ""
 fi
 
+if [ "$seed_database" = true ] && { [ "$run_journey_tests" = true ] || [ "$run_journey_tests_with_browserstack" = true ]; }; then
+  echo "Waiting for search cache to warm..."
+  for i in $(seq 1 15); do
+    COUNT=$(curl -sf "http://localhost:3001/v1/payments/search?searchString=Sons" 2>/dev/null | grep -o '"count":[0-9]*' | grep -o '[0-9]*')
+    if [ -n "$COUNT" ] && [ "$COUNT" -gt 0 ]; then
+      echo "Search cache ready ($COUNT results)"
+      break
+    fi
+    sleep 1
+  done
+fi
+
 if [ "$run_journey_tests" = true ]; then
   echo "Starting fcp-mpdp-journey-test-suite..."
   cd "${projectRoot}"
