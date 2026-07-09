@@ -3,6 +3,8 @@
     { "name": "fcp-mpdp-backend", "path": "../fcp-mpdp-backend" },
     { "name": "fcp-mpdp-frontend", "path": "../fcp-mpdp-frontend" },
     { "name": "fcp-mpdp-admin", "path": "../fcp-mpdp-admin" },
+    { "name": "fcp-mpdp-journey-test-suite", "path": "../fcp-mpdp-journey-test-suite" },
+    { "name": "fcp-mpdp-performance-test-suite", "path": "../fcp-mpdp-performance-test-suite" },
     { "name": "fcp-mpdp-core", "path": "." }
   ],
   "tasks": {
@@ -72,6 +74,32 @@
         "dependsOn": ["Local: Backend", "Local: Frontend", "Local: Admin"],
         "dependsOrder": "parallel",
         "problemMatcher": []
+      },
+      {
+        "label": "Test: Journey (local)",
+        "type": "shell",
+        "command": "npm run test:local",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-journey-test-suite}"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        }
+      },
+      {
+        "label": "Test: Performance (local)",
+        "type": "shell",
+        "command": "./test.sh",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-performance-test-suite}"
+        },
+        "problemMatcher": [],
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        }
       }
     ]
   }
