@@ -13,7 +13,7 @@
       {
         "label": "Local: Backend",
         "type": "shell",
-        "command": "npm run local",
+        "command": "trap true INT; npm run local; exec bash",
         "options": {
           "cwd": "${workspaceFolder:fcp-mpdp-backend}"
         },
@@ -28,7 +28,7 @@
       {
         "label": "Local: Frontend",
         "type": "shell",
-        "command": "npm run local",
+        "command": "trap true INT; npm run local; exec bash",
         "options": {
           "cwd": "${workspaceFolder:fcp-mpdp-frontend}"
         },
@@ -43,7 +43,7 @@
       {
         "label": "Local: Admin",
         "type": "shell",
-        "command": "npm run local",
+        "command": "trap true INT; npm run local; exec bash",
         "options": {
           "cwd": "${workspaceFolder:fcp-mpdp-admin}"
         },
@@ -72,6 +72,55 @@
       {
         "label": "Local: Start all",
         "dependsOn": ["Local: Backend", "Local: Frontend", "Local: Admin"],
+        "dependsOrder": "parallel",
+        "problemMatcher": []
+      },
+      {
+        "label": "Terminal: Backend",
+        "type": "shell",
+        "command": "exec bash",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-backend}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "terminals",
+          "panel": "dedicated"
+        }
+      },
+      {
+        "label": "Terminal: Frontend",
+        "type": "shell",
+        "command": "exec bash",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-frontend}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "terminals",
+          "panel": "dedicated"
+        }
+      },
+      {
+        "label": "Terminal: Admin",
+        "type": "shell",
+        "command": "exec bash",
+        "options": {
+          "cwd": "${workspaceFolder:fcp-mpdp-admin}"
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "group": "terminals",
+          "panel": "dedicated"
+        }
+      },
+      {
+        "label": "Terminal: Open all",
+        "detail": "Open split terminals for backend, frontend, and admin",
+        "dependsOn": ["Terminal: Backend", "Terminal: Frontend", "Terminal: Admin"],
         "dependsOrder": "parallel",
         "problemMatcher": []
       },
