@@ -1,0 +1,796 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "options": {
+        "content": "# Activity Summary",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Logins",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminLogin",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Uploads",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminBulkUpload",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Creates",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminPaymentCreate",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Updates",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminPaymentUpdate",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Deletes",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminPaymentDelete",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Bulk deletions",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminDeleteByYear",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 101,
+      "options": {
+        "content": "# Activity Over Time",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 20,
+            "lineWidth": 1,
+            "drawStyle": "bars",
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "title": "Admin operations per day",
+      "type": "timeseries",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminBulkUpload",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminSetPublishedDate",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminDeleteByYear",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "C",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminDeleteByPublishedDate",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "D",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminCacheInvalidate",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "E",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 20,
+            "lineWidth": 1,
+            "drawStyle": "line",
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "title": "Admin logins per hour",
+      "type": "timeseries",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "AdminLogin",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-admin",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 102,
+      "options": {
+        "content": "# Audit Log",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "grafana-opensearch-datasource",
+        "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 7,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "@timestamp"
+          }
+        ]
+      },
+      "title": "Admin action audit log",
+      "type": "table",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-opensearch-datasource",
+            "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+          },
+          "query": "service.name: \"fcp-mpdp-admin\" AND event.category: \"admin\"",
+          "queryType": "lucene",
+          "metrics": [
+            {
+              "type": "logs",
+              "id": "1"
+            }
+          ],
+          "refId": "A",
+          "luceneQueryType": "Logs",
+          "format": "table",
+          "timeField": "@timestamp",
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "type": "date_histogram",
+              "settings": {
+                "interval": "auto"
+              }
+            }
+          ]
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "@timestamp": true,
+              "event.action": true,
+              "event.outcome": true,
+              "message": true
+            },
+            "excludeByName": {}
+          }
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 103,
+      "options": {
+        "content": "# Auth Failures",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "grafana-opensearch-datasource",
+        "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 8,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "@timestamp"
+          }
+        ]
+      },
+      "title": "Authentication failures",
+      "type": "table",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-opensearch-datasource",
+            "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+          },
+          "query": "service.name: \"fcp-mpdp-admin\" AND event.category: \"auth\" AND event.outcome: \"failure\"",
+          "queryType": "lucene",
+          "metrics": [
+            {
+              "type": "logs",
+              "id": "1"
+            }
+          ],
+          "refId": "A",
+          "luceneQueryType": "Logs",
+          "format": "table",
+          "timeField": "@timestamp",
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "type": "date_histogram",
+              "settings": {
+                "interval": "auto"
+              }
+            }
+          ]
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "@timestamp": true,
+              "event.reason": true,
+              "message": true
+            },
+            "excludeByName": {}
+          }
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [
+    "mpdp",
+    "custom"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "title": "fcp-mpdp-admin (custom)",
+  "version": 1
+}

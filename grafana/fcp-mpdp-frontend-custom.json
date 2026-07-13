@@ -1,0 +1,772 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "options": {
+        "content": "# Usage Overview",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Searches",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Search",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Detail views",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Details",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Summary views",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Summary",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Downloads (all)",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_All",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Downloads (filtered)",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_Filtered",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Downloads (detail)",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_Detail",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 101,
+      "options": {
+        "content": "# Traffic Over Time",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 20,
+            "lineWidth": 1,
+            "drawStyle": "line",
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "title": "Page views per hour",
+      "type": "timeseries",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Search",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Details",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PageView_Summary",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "C",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 20,
+            "lineWidth": 1,
+            "drawStyle": "bars",
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "title": "Downloads per hour",
+      "type": "timeseries",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_All",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_Filtered",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "Download_Detail",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-frontend",
+          "period": "3600",
+          "queryMode": "Metrics",
+          "refId": "C",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 102,
+      "options": {
+        "content": "# Search Quality",
+        "mode": "markdown"
+      },
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "grafana-opensearch-datasource",
+        "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 9,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "@timestamp"
+          }
+        ]
+      },
+      "title": "Recent search activity",
+      "type": "table",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-opensearch-datasource",
+            "uid": "f2b470f0-a723-4477-a07f-0f9dfe683bd8"
+          },
+          "query": "service.name: \"fcp-mpdp-frontend\" AND event.action: \"search-results\"",
+          "queryType": "lucene",
+          "luceneQueryType": "Logs",
+          "format": "table",
+          "timeField": "@timestamp",
+          "alias": "",
+          "metrics": [
+            {
+              "type": "logs",
+              "id": "1"
+            }
+          ],
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "type": "date_histogram",
+              "settings": {
+                "interval": "auto"
+              }
+            }
+          ],
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "@timestamp": true,
+              "message": true
+            },
+            "excludeByName": {}
+          }
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": ""
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "textMode": "value_and_name"
+      },
+      "title": "Zero-result searches",
+      "type": "stat",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": ""
+          },
+          "dimensions": {},
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "ZeroResultSearches",
+          "metricQueryType": 0,
+          "namespace": "fcp-mpdp-backend",
+          "period": "86400",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "statistic": "Sum"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [
+    "mpdp",
+    "custom"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "title": "fcp-mpdp-frontend (custom)",
+  "version": 1
+}
