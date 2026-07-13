@@ -127,7 +127,7 @@
       {
         "label": "Test: Journey (docker)",
         "type": "shell",
-        "command": "npm run docker:test:local",
+        "command": "npm run docker:test",
         "options": {
           "cwd": "${workspaceFolder:fcp-mpdp-journey-test-suite}"
         },
@@ -140,7 +140,7 @@
       {
         "label": "Test: Journey (local)",
         "type": "shell",
-        "command": "npm run test:local",
+        "command": "npm run test",
         "options": {
           "cwd": "${workspaceFolder:fcp-mpdp-journey-test-suite}"
         },

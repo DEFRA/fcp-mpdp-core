@@ -95,7 +95,7 @@ if [ "$run_journey_tests" = true ]; then
   cd ./fcp-mpdp-journey-test-suite && \
   echo "Running journey tests (Playwright only)..."
   docker compose build
-  npm run docker:test:local
+  npm run docker:test
 fi
 
 if [ "$run_journey_tests_with_browserstack" = true ]; then
@@ -104,7 +104,7 @@ if [ "$run_journey_tests_with_browserstack" = true ]; then
   cd ./fcp-mpdp-journey-test-suite && \
   echo "Running journey tests (Playwright + BrowserStack)..."
   docker compose build
-  npm run docker:test:local:browserstack
+  npm run docker:test:browserstack
 fi
 
 if [ "$run_performance_tests" = true ]; then
